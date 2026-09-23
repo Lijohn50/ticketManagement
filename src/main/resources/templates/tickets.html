@@ -102,30 +102,53 @@
     <h2>🎟️ Ticket Booking Portal</h2>
 
     <!-- Ticket Form (Create & Update) -->
-    <form action="#" th:action="@{/save}" th:object="${ticket}" method="post">
+    <form th:action="@{/save}" th:object="${ticket}" method="post">
 
-        <div class="form-group">
-            <label for="eventName">Event Name:</label>
-            <input type="text" id="eventName" th:field="*{eventName}" required placeholder="e.g. Rock Concert" />
-        </div>
+    <input type="hidden" name="id" th:value="${ticket.id}" />
 
-        <div class="form-group">
-            <label for="customerName">Customer Name:</label>
-            <input type="text" id="customerName" th:field="*{customerName}" required placeholder="e.g. John Doe" />
-        </div>
+    <div class="form-group">
+        <label for="eventName">Event Name:</label>
+        <input type="text"
+               id="eventName"
+               th:field="*{eventName}"
+               required
+               placeholder="e.g. Rock Concert" />
+    </div>
 
-        <div class="form-group">
-            <label for="price">Price ($):</label>
-            <input type="number" step="0.01" id="price" th:field="*{price}" required placeholder="50.00" />
-        </div>
+    <div class="form-group">
+        <label for="customerName">Customer Name:</label>
+        <input type="text"
+               id="customerName"
+               th:field="*{customerName}"
+               required
+               placeholder="e.g. John Doe" />
+    </div>
 
-        <div class="form-group">
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" th:field="*{quantity}" required placeholder="1" />
-        </div>
+    <div class="form-group">
+        <label for="price">Price ($):</label>
+        <input type="number"
+               step="0.01"
+               id="price"
+               th:field="*{price}"
+               required
+               placeholder="50.00" />
+    </div>
 
-        <button type="submit" th:text="${ticket.id == null} ? 'Buy Ticket' : 'Update Ticket'">Save Ticket</button>
-    </form>
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number"
+               id="quantity"
+               th:field="*{quantity}"
+               required
+               placeholder="1" />
+    </div>
+
+    <button type="submit"
+            th:text="${ticket.id == null} ? 'Buy Ticket' : 'Update Ticket'">
+        Save Ticket
+    </button>
+</form>
+
 
     <!-- Ticket List Table -->
     <h2>Booked Tickets</h2>
